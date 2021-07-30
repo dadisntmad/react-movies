@@ -1,0 +1,110 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    font-family: 'Arimo', sans-serif;
+}
+
+.container {
+    max-width: 1270px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.header {
+    height: 53px;
+    background: #000000;
+    margin-bottom: 48px;
+}
+
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+ul {
+    display: flex;
+}
+
+li {
+    list-style: none;
+    margin-left: 24px;
+}
+
+li:first-child {
+    margin: 0;
+}
+
+li a {
+    text-decoration: none;
+    color: #c1c1c1;
+    transition: .3s all;
+}
+
+li a:hover {
+    color: #ffffff;
+}
+
+.find__button {
+    position: relative;
+}
+
+input {
+    outline: none;
+    border-radius: 7px;
+    padding: 8px 40px 8px 10px;
+    font-size: 14px;
+    border: none;
+}
+
+.tooltip {
+    position: absolute;
+    top: 7px;
+    right: 15px;
+    cursor: pointer;
+    fill: #6d6d6d;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 70px;
+    font-size: 14px;
+    background-color: #585858;
+    color: #ffffff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 145%;
+}
+
+.tooltip svg:hover {
+    fill: #000000;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #585858 transparent transparent;
+}
+
