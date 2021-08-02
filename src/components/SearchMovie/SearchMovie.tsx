@@ -1,18 +1,18 @@
 import React from 'react';
-import './movies.css';
 import {useDispatch} from "react-redux";
-import {fetchMovies} from "../../redux/actions/movies";
+import {useParams} from 'react-router-dom';
 import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {fetchSearchMovie} from "../../redux/actions/movies";
 import {Movie} from "./Movie";
 
-
-export const Movies: React.FC = () => {
+export const SearchMovie: React.FC = () => {
   const dispatch = useDispatch();
   const movies = useTypedSelector(({movies}) => movies.movies);
+  const {query} = useParams<{ query: string }>();
 
   React.useEffect(() => {
-    dispatch(fetchMovies());
-  }, [])
+    dispatch(fetchSearchMovie(query))
+  }, [query])
 
   return (
     <div>
@@ -28,4 +28,3 @@ export const Movies: React.FC = () => {
     </div>
   );
 };
-
