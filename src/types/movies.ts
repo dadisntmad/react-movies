@@ -49,4 +49,11 @@ type setClear = {
   type: MoviesActionTypes.SET_CLEAR
 }
 
-export type MoviesActionType = setMovies | setError | setPage | setIsLoading | setQuery | setClear;
+
+export type MoviesActionType =
+  setMovies
+  | setError
+  | setPage
+  | setIsLoading
+  | setQuery
+  | setClear;

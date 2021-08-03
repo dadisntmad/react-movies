@@ -3,7 +3,7 @@ import './movies.css';
 import {useDispatch} from "react-redux";
 import {fetchMovies} from "../../redux/actions/movies";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {Movie} from "./Movie";
+import {Movie} from "../MovieInfo/Movie";
 
 
 export const Movies: React.FC = () => {
@@ -15,7 +15,7 @@ export const Movies: React.FC = () => {
   }, [])
 
   return (
-    <div>
+    <div className="movies">
       <div className="container">
         <div className="movies__content">
           {

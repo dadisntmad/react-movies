@@ -12,6 +12,10 @@
     grid-row-gap: 0;
 }
 
+.movies {
+    margin-top: 48px;
+}
+
 .movies__content .movie {
     cursor: pointer;
     width: 92%;

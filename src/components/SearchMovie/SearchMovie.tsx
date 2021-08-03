@@ -3,7 +3,8 @@ import {useDispatch} from "react-redux";
 import {useParams} from 'react-router-dom';
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {fetchSearchMovie} from "../../redux/actions/movies";
-import {Movie} from "./Movie";
+import {Movie} from "../MovieInfo/Movie";
+import './searchMovie.css';
 
 export const SearchMovie: React.FC = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export const SearchMovie: React.FC = () => {
   }, [query])
 
   return (
-    <div>
+    <div className="search">
       <div className="container">
         <div className="movies__content">
           {

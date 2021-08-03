@@ -17,7 +17,7 @@
 .header {
     height: 53px;
     background: #000000;
-    margin-bottom: 48px;
+    /*margin-bottom: 48px;*/
 }
 
 .header__content {
@@ -60,10 +60,15 @@ li a:hover {
 
 input {
     outline: none;
+    background: #c1c1c1;
     border-radius: 7px;
     padding: 8px 40px 8px 10px;
     font-size: 14px;
     border: none;
+}
+
+input:focus {
+    background: #ffffff;
 }
 
 .tooltip {

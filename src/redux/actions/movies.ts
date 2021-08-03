@@ -30,6 +30,7 @@ export const setClear = (): MoviesActionType => ({
   type: MoviesActionTypes.SET_CLEAR,
 })
 
+
 export const fetchMovies = () => async (dispatch: Dispatch<MoviesActionType>) => {
   try {
     const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_MOVIES_API_KEY}`);
