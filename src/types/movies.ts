@@ -4,6 +4,22 @@ export type MoviesState = {
   page: number,
   isLoading: boolean,
   query: string,
+  movieProfile: MovieProfile,
+}
+
+export type MovieProfile = {
+  id?: number,
+  genres?: Genres[],
+  overview?: string,
+  poster_path?: string,
+  release_date?: string,
+  title?: string,
+  vote_average?: number
+}
+
+type Genres = {
+  id: number,
+  name: string
 }
 
 export type MoviesType = {
@@ -19,6 +35,7 @@ export enum MoviesActionTypes {
   SET_IS_LOADING = 'MOVIES@SET_IS_LOADING',
   SET_QUERY = 'MOVIES@SET_QUERY',
   SET_CLEAR = 'MOVIES@SET_CLEAR',
+  SET_MOVIE_PROFILE = 'MOVIES@SET_MOVIE_PROFILE',
 }
 
 type setMovies = {
@@ -49,6 +66,10 @@ type setClear = {
   type: MoviesActionTypes.SET_CLEAR
 }
 
+type setMovieProfile = {
+  type: MoviesActionTypes.SET_MOVIE_PROFILE,
+  payload: MovieProfile
+}
 
 export type MoviesActionType =
   setMovies
@@ -56,4 +77,5 @@ export type MoviesActionType =
   | setPage
   | setIsLoading
   | setQuery
-  | setClear;
+  | setClear
+  | setMovieProfile;

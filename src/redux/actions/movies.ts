@@ -1,4 +1,4 @@
-import {MoviesActionType, MoviesActionTypes, MoviesType} from "../../types/movies";
+import {MovieProfile, MoviesActionType, MoviesActionTypes, MoviesType} from "../../types/movies";
 import {Dispatch} from "redux";
 import axios from "axios";
 
@@ -30,6 +30,10 @@ export const setClear = (): MoviesActionType => ({
   type: MoviesActionTypes.SET_CLEAR,
 })
 
+const setMovieProfile = (movie: MovieProfile): MoviesActionType => ({
+  type: MoviesActionTypes.SET_MOVIE_PROFILE,
+  payload: movie,
+})
 
 export const fetchMovies = () => async (dispatch: Dispatch<MoviesActionType>) => {
   try {
@@ -44,6 +48,15 @@ export const fetchSearchMovie = (query: string) => async (dispatch: Dispatch<Mov
   try {
     const response = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${process.env.REACT_APP_MOVIES_API_KEY}`);
     dispatch(setMovies(response.data.results));
+  } catch (e) {
+    dispatch(setError(e));
+  }
+}
+
+export const fetchMovieProfile = (movieId: number) => async (dispatch: Dispatch<MoviesActionType>) => {
+  try {
+    const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_MOVIES_API_KEY}`)
+    dispatch(setMovieProfile(response.data));
   } catch (e) {
     dispatch(setError(e));
   }

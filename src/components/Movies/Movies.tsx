@@ -5,7 +5,6 @@ import {fetchMovies} from "../../redux/actions/movies";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {Movie} from "../MovieInfo/Movie";
 
-
 export const Movies: React.FC = () => {
   const dispatch = useDispatch();
   const movies = useTypedSelector(({movies}) => movies.movies);

@@ -12,8 +12,8 @@ export const App: React.FC = () => {
       <Header/>
       <Switch>
         <Route exact path="/" component={Movies}/>
-        <Route exact path="/:query" component={SearchMovie}/>
-        <Route exact path="/:id" component={MovieInfo}/>
+        <Route exact path="/query=:query" component={SearchMovie}/>
+        <Route exact path="/movie/:id" component={MovieInfo}/>
       </Switch>
     </div>
   );

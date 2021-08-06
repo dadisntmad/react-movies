@@ -17,7 +17,9 @@
 .header {
     height: 53px;
     background: #000000;
-    /*margin-bottom: 48px;*/
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .header__content {

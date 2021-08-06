@@ -14,7 +14,7 @@ export const SearchForm = () => {
   }
 
   const handleResults = (query: string) => {
-    history.push(`/${query}`);
+    history.push(`/query=${query}`);
     dispatch(setClear());
   }
 

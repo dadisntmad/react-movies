@@ -6,6 +6,7 @@ const initialState: MoviesState = {
   page: 1,
   isLoading: false,
   query: '',
+  movieProfile: {},
 }
 
 const movies = (state = initialState, action: MoviesActionType): MoviesState => {
@@ -40,6 +41,11 @@ const movies = (state = initialState, action: MoviesActionType): MoviesState => 
       return {
         ...state,
         query: '',
+      };
+    case MoviesActionTypes.SET_MOVIE_PROFILE:
+      return {
+        ...state,
+        movieProfile: action.payload,
       };
     default:
       return state;
