@@ -1,13 +1,14 @@
-import {MoviesActionType, MoviesActionTypes, MoviesState} from "../../types/movies";
+import { MoviesActionType, MoviesActionTypes, MoviesState } from '../../types/movies';
 
 const initialState: MoviesState = {
   movies: [],
   error: null,
   page: 1,
+  totalPages: 0,
   isLoading: false,
   query: '',
   movieProfile: {},
-}
+};
 
 const movies = (state = initialState, action: MoviesActionType): MoviesState => {
   switch (action.type) {
@@ -26,6 +27,11 @@ const movies = (state = initialState, action: MoviesActionType): MoviesState => 
       return {
         ...state,
         page: action.payload,
+      };
+    case MoviesActionTypes.SET_TOTAL_PAGES:
+      return {
+        ...state,
+        totalPages: action.payload,
       };
     case MoviesActionTypes.SET_IS_LOADING:
       return {
@@ -50,6 +56,6 @@ const movies = (state = initialState, action: MoviesActionType): MoviesState => 
     default:
       return state;
   }
-}
+};
 
 export default movies;

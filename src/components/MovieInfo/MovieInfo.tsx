@@ -8,7 +8,7 @@ import {fetchMovieProfile} from "../../redux/actions/movies";
 const IMAGES = 'https://image.tmdb.org/t/p/w300';
 const BG_IMAGES = 'https://image.tmdb.org/t/p/original';
 
-export const MovieInfo = () => {
+export const MovieInfo: React.FC = () => {
   const dispatch = useDispatch();
   const {id} = useParams<{ id: string }>();
   const movieProfile = useTypedSelector(({movies}) => movies.movieProfile);
