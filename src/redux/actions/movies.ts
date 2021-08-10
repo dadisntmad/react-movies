@@ -1,6 +1,17 @@
-import { MovieProfile, MoviesActionType, MoviesActionTypes, MoviesType } from '../../types/movies';
+import { MovieProfile, MoviesActionType, MoviesType } from '../../types/movies';
 import { Dispatch } from 'redux';
 import axios from 'axios';
+
+export enum MoviesActionTypes {
+  SET_MOVIES = 'MOVIES@SET_MOVIES',
+  SET_ERROR = 'MOVIES@SET_ERROR',
+  SET_PAGE = 'MOVIES@SET_PAGE',
+  SET_TOTAL_PAGES = 'MOVIES@SET_TOTAL_PAGES',
+  SET_IS_LOADING = 'MOVIES@SET_IS_LOADING',
+  SET_QUERY = 'MOVIES@SET_QUERY',
+  SET_CLEAR = 'MOVIES@SET_CLEAR',
+  SET_MOVIE_PROFILE = 'MOVIES@SET_MOVIE_PROFILE',
+}
 
 const setMovies = (movies: MoviesType[]): MoviesActionType => ({
   type: MoviesActionTypes.SET_MOVIES,
@@ -44,7 +55,7 @@ export const fetchMovies =
   (page: number = 1) =>
   async (dispatch: Dispatch<MoviesActionType>) => {
     try {
-      dispatch(setPage(page));
+      dispatch(setIsLoading());
       const response = await axios.get(
         `https://api.themoviedb.org/3/discover/movie?page=${page}&api_key=${process.env.REACT_APP_MOVIES_API_KEY}`,
       );
@@ -59,7 +70,7 @@ export const fetchSearchMovie =
   (query: string, page: number = 1) =>
   async (dispatch: Dispatch<MoviesActionType>) => {
     try {
-      dispatch(setPage(page));
+      dispatch(setIsLoading());
       const response = await axios.get(
         `https://api.themoviedb.org/3/search/movie?query=${query}&page=${page}&api_key=${process.env.REACT_APP_MOVIES_API_KEY}`,
       );

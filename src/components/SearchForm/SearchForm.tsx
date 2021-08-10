@@ -1,8 +1,11 @@
 import React from 'react';
+
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+
+import { setClear, setPage, setQuery } from '../../redux/actions/movies';
+
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { setClear, setPage, setQuery } from '../../redux/actions/movies';
 
 export const SearchForm: React.FC = () => {
   const dispatch = useDispatch();

@@ -1,18 +1,22 @@
 import React from 'react';
-import './movies.css';
-import { useDispatch } from 'react-redux';
-import { fetchMovies, setPage } from '../../redux/actions/movies';
+
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+
+import { useDispatch } from 'react-redux';
+
+import { fetchMovies } from '../../redux/actions/movies';
+
 import { Movie } from '../MovieInfo/Movie';
-import { Pagination } from '@material-ui/lab';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { Loader } from '../Common/Loader/Loader';
+import { Paginator } from '../Common/Pagination/Pagination';
+
+import './movies.css';
 
 export const Movies: React.FC = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const movies = useTypedSelector(({ movies }) => movies.movies);
   const page = useTypedSelector(({ movies }) => movies.page);
-  const totalPages = useTypedSelector(({ movies }) => movies.totalPages);
+  const isLoading = useTypedSelector(({ movies }) => movies.isLoading);
 
   React.useEffect(() => {
     dispatch(fetchMovies(page));
@@ -22,45 +26,14 @@ export const Movies: React.FC = () => {
     <div className="movies">
       <div className="container">
         <div className="movies__content">
-          {movies && movies.map((movie) => <Movie key={movie.id} {...movie} />)}
+          {isLoading
+            ? Array(20)
+                .fill(0)
+                .map((_, index) => <Loader key={index} />)
+            : movies && movies.map((movie) => <Movie key={movie.id} {...movie} />)}
         </div>
-        <div className={classes.root}>
-          <Pagination
-            count={totalPages}
-            variant="outlined"
-            shape="rounded"
-            page={page}
-            defaultPage={1}
-            onChange={(e, value) => dispatch(setPage(value))}
-          />
-        </div>
+        <Paginator page={page} />
       </div>
     </div>
   );
 };
-
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    root: {
-      '& > *': {
-        padding: '48px 0',
-      },
-      '& .MuiPagination-ul': {
-        justifyContent: 'center',
-      },
-      '& .Mui-selected': {
-        color: '#000',
-        borderColor: '#fff',
-        backgroundColor: '#444',
-      },
-      '& .MuiPaginationItem-page': {
-        borderColor: '#c1c1c1',
-        color: '#c1c1c1',
-      },
-      '& .MuiPaginationItem-ellipsis': {
-        borderColor: '#c1c1c1',
-        color: '#c1c1c1',
-      },
-    },
-  }),
-);

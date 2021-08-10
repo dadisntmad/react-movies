@@ -1,3 +1,5 @@
+import {MoviesActionTypes} from "../redux/actions/movies";
+
 export type MoviesState = {
   movies: MoviesType[];
   error: null | string;
@@ -28,17 +30,6 @@ export type MoviesType = {
   poster_path: string;
   title: string;
 };
-
-export enum MoviesActionTypes {
-  SET_MOVIES = 'MOVIES@SET_MOVIES',
-  SET_ERROR = 'MOVIES@SET_ERROR',
-  SET_PAGE = 'MOVIES@SET_PAGE',
-  SET_TOTAL_PAGES = 'MOVIES@SET_TOTAL_PAGES',
-  SET_IS_LOADING = 'MOVIES@SET_IS_LOADING',
-  SET_QUERY = 'MOVIES@SET_QUERY',
-  SET_CLEAR = 'MOVIES@SET_CLEAR',
-  SET_MOVIE_PROFILE = 'MOVIES@SET_MOVIE_PROFILE',
-}
 
 type setMovies = {
   type: MoviesActionTypes.SET_MOVIES;

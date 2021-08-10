@@ -1,4 +1,5 @@
-import { MoviesActionType, MoviesActionTypes, MoviesState } from '../../types/movies';
+import { MoviesActionType, MoviesState } from '../../types/movies';
+import {MoviesActionTypes} from "../actions/movies";
 
 const initialState: MoviesState = {
   movies: [],
