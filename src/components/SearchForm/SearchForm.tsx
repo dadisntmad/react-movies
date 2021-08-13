@@ -17,7 +17,8 @@ export const SearchForm: React.FC = () => {
   };
 
   const handleResults = (query: string) => {
-    history.push(`/${query}`);
+    if (!query) return;
+    history.push(`/search/${query}`);
     dispatch(setPage(1));
     dispatch(setClear());
   };

@@ -22,7 +22,7 @@ export const SearchMovie: React.FC = () => {
 
   React.useEffect(() => {
     dispatch(fetchSearchMovie(query, page));
-  }, [query, page]);
+  }, [dispatch, query, page]);
 
   return (
     <div className="search">
